@@ -1,0 +1,22 @@
+// This is Update Router
+//   @Patch(":id")
+//   @ApiBearerAuth()
+//   @UseGuards(AuthGuard)
+//   @ApiBody({ type: createUserDto})
+//   @ApiResponse({ status: 200, description: 'User updated successfully' })
+//   @ApiResponse({ status: 401, description: 'Unauthorized' })
+//   @ApiResponse({ status: 500, description: 'internal server error' })
+//   @ApiOperation({ summary: 'Update User By ID' })
+//   async updateExistingUser(@Param('id') id:string, @Body() updateData: Partial<createUserDto>){
+//     return this.authService.patchUser(id , updateData)
+//   }
+
+
+
+// async patchUser(id: string, updateData: Partial<createUserDto>): Promise<AuthClass> {
+  //   const user = await this.authModel.findByIdAndUpdate(id, updateData, { new: true }).exec();
+  //   if (!user) {
+  //     throw new NotFoundException(`User with ${id} not found`);
+  //   }
+  //   return user;
+  // }
