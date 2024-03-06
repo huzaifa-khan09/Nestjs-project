@@ -28,6 +28,10 @@ import * as Constants from './ConstantsAuth/constants.auth';
 /**
  * This is our Auth Controller
  */
+
+
+
+
 @Controller(Constants.AUTH_API_ENDPOINT)
 @ApiTags('Authentication Module')
 export class AuthController {
