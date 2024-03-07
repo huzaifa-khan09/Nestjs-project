@@ -15,15 +15,66 @@ export class PostService {
     return this.postModel.aggregate([
       {
         $lookup: {
+          from: "commentclasses",
+          localField: "_id",
+          foreignField: "post",
+          as: "comments"
+        }
+      },
+      {
+        $unwind: "$comments"
+      },
+      {
+        $lookup: {
+          from: "authclasses", // Replace with the actual name of the users collection
+          localField: "comments.user",
+          foreignField: "_id",
+          as: "comments.user"
+        }
+      },
+      {
+        $group: {
+          _id: "$_id",
+          title: { $first: "$title" },
+          content: { $first: "$content" },
+          createdAt: { $first: "$createdAt" },
+          updatedAt: { $first: "$updatedAt" },
+          comments: { $push: "$comments" }
+        }
+      }
+    ]);
+  }
+
+  async getCommentWithSpecificDate(createdDate: Date): Promise<PostClass[]>{
+    return this.postModel.aggregate([
+      {
+        $lookup: {
           from: 'commentclasses',
           localField: '_id',
           foreignField: 'post',
           as: 'comments',
         },
       },
+      {
+        $unwind: '$comments',
+      },
+      {
+        $match: {
+          'comments.createdAt': {
+            $gte: new Date(createdDate.toISOString()), // Assuming you want comments on or after the specified date
+            $lt: new Date(new Date(createdDate).setDate(createdDate.getDate() + 1)), // Assuming you want comments before the next day
+          },
+        },
+      },
+      {
+        $group: {
+          _id: '$_id',
+          // other fields from the post document that you want to include
+          comments: { $push: '$comments' },
+        },
+      },
     ]);
   }
-
 
   /**
    * Create A New Post

@@ -26,8 +26,8 @@ import * as Constants from './ConstantsPost/constants.post';
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
-  /**
-   * Here we will fetch all our posts
+  /**Here 
+   * we will fetch all our posts
    */
   @Get(Constants.GET_ALL_POSTS)
   @ApiBearerAuth()
@@ -38,6 +38,22 @@ export class PostController {
   @ApiResponse({ status: 403, description: 'Forbidden' })
   getPost() {
     return this.postService.findAll();
+  }
+
+  /**Here 
+   * we will date all our posts
+   */
+
+  @Get(Constants.GET_COMMENT_BY_DATE)
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard)
+  @ApiOperation({ summary: 'Get Comment By Date' })
+  @ApiResponse({ type: ApiResponseDto })
+  @ApiResponse({ status: 200, description: 'All Post Fetched Successfully' })
+  @ApiResponse({ status: 403, description: 'Forbidden' })
+  getCommentWithDate(){
+    const createdDate = new Date('2024-3=07')
+    return this.postService.getCommentWithSpecificDate(createdDate)
   }
 
   /**
