@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { PostClass } from 'src/post/Schema/post.Schema';
 
-@Schema()
+@Schema({timestamps:true})
 export class AuthClass extends Document {
   @Prop({ required: true })
   username: string;

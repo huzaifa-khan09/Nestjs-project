@@ -3,7 +3,7 @@ import mongoose, { Document } from 'mongoose';
 import { AuthClass } from 'src/auth/Schema/auth.schema';
 import { PostClass } from 'src/post/Schema/post.Schema';
 
-@Schema()
+@Schema({timestamps: true})
 export class CommentClass extends Document {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Post' })
   post: PostClass;

@@ -6,7 +6,7 @@ import { Document } from 'mongoose';
 import { AuthClass } from 'src/auth/Schema/auth.schema';
 import { CommentClass } from 'src/comment/Schema/comment.schema';
 
-@Schema()
+@Schema({timestamps: true})
 export class PostClass extends Document {
   @Prop({ required: true })
   title: string;

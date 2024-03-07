@@ -20,13 +20,11 @@ export class CommentService {
   }
 
   /**
-   *
    * @param createCommentDto
    */
   async createComment(
     createCommentDto: createCommentDto,
   ): Promise<CommentClass> {
-    // console.log(createCommentDto)
     return await this.commentModel.create(createCommentDto);
   }
 

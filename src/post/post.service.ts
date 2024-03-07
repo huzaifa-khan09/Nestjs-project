@@ -12,8 +12,18 @@ export class PostService {
   ) {}
 
   async findAll(): Promise<PostClass[]> {
-    return this.postModel.find().populate('comments');
+    return this.postModel.aggregate([
+      {
+        $lookup: {
+          from: 'commentclasses',
+          localField: '_id',
+          foreignField: 'post',
+          as: 'comments',
+        },
+      },
+    ]);
   }
+
 
   /**
    * Create A New Post
