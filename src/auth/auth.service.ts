@@ -60,7 +60,7 @@ export class AuthService {
 
   //Logic For Login User
   async loginUser({ email, password }: LoginDto): Promise<AuthClass> {
-    const user = await this.authModel.findOne({ email }).exec();
+    const user = await this.authModel.findOne({ email }).populate('posts');
     if (user) {
       const passwordMatch = await bcrypt.compare(password, user?.password);
       if (passwordMatch) {

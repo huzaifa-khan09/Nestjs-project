@@ -38,7 +38,7 @@ export class AuthController {
    */
   @Post(Constants.SIGN_UP_USER)
   @ApiBody({ type: createUserDto })
-  @ApiOperation({ summary: 'New User can signUp from here' })
+  @ApiOperation({ summary: 'New User can     from here' })
   @ApiResponse({ type: ApiResponseDto })
   @ApiResponse({ status: 200, description: 'User SignUp Successfully' })
   @ApiResponse({ status: 403, description: 'Forbidden' })

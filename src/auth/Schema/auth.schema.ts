@@ -17,11 +17,11 @@ export class AuthClass extends Document {
   @Prop({ required: true })
   phoneNumber: number;
 
-  @Prop({type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }] })
-  posts:  PostClass[];
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Post' })
+  posts: PostClass[];
 
-//   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }] })
-//   posts: string[];
+  //   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }] })
+  //   posts: string[];
 }
 
 export const AuthScheam = SchemaFactory.createForClass(AuthClass);
