@@ -93,7 +93,7 @@ export class PostService {
   /**
    * Delete A Existing Post
    */
-  async deletePost(id): Promise<PostClass> {
+  async deletePost(id: string): Promise<PostClass> {
     return await this.postModel.findByIdAndDelete(id).exec();
   }
 

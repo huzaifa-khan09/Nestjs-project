@@ -43,7 +43,6 @@ export class PostController {
   /**Here
    * we will date all our posts
    */
-
   @Get(Constants.GET_COMMENT_BY_DATE)
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
