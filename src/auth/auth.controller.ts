@@ -24,6 +24,7 @@ import {
 } from '@nestjs/swagger';
 import { ApiResponseDto } from './Dtos/ApiResponseDto/api.response.dto';
 import * as Constants from './ConstantsAuth/constants.auth';
+import { MessagePattern } from '@nestjs/microservices';
 
 /**
  * This is our Auth Controller
@@ -56,6 +57,7 @@ export class AuthController {
   /**
    * This is our login controller
    */
+  @MessagePattern({ cmd: 'login'})
   @HttpCode(HttpStatus.OK)
   @Post(Constants.LOG_IN_USER)
   @ApiBody({ type: LoginDto })

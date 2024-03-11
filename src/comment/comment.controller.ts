@@ -21,6 +21,7 @@ import { ApiResponseDto } from 'src/auth/Dtos/ApiResponseDto/api.response.dto';
 import { createCommentDto } from './Dto/commentDto/comment.dto';
 import { updateCommentDto } from './Dto/updateCommentDto/update.comment.dto';
 import * as constants from './commentConstants/comment.constant';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Controller(constants.COMMENT_API_ENDPOINT)
 @ApiTags('Comment Module')
@@ -45,6 +46,7 @@ export class CommentController {
   /**
    * This Route Will Be For Creating Comment
    */
+  @MessagePattern({ cmd: 'addComment' })
   @Post(constants.CREATE_COMMENTS)
   @ApiBearerAuth()
   @UseGuards(AuthGuard)

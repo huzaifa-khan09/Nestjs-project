@@ -20,6 +20,7 @@ import { createPostDto } from './Dto/createPostDto/CreatePostDto';
 import { AuthGuard } from 'src/auth/authguard/auth.guard';
 import { ApiResponseDto } from './Dto/ApiResponseDto/api.response.dto';
 import * as Constants from './ConstantsPost/constants.post';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Controller(Constants.POST_API_ENDPOINT)
 @ApiTags('Post Module')
@@ -43,6 +44,7 @@ export class PostController {
   /**Here
    * we will date all our posts
    */
+  @MessagePattern({ cmd: 'getPosts'})
   @Get(Constants.GET_COMMENT_BY_DATE)
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
