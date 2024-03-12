@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { gatewayModule } from './gateway/gatewayModule';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     AuthModule,
     PostModule,
     CommentModule,
+    gatewayModule,
   ],
   controllers: [AppController],
   providers: [AppService],
